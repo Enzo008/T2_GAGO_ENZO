@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Pregunta 4</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Horas Trabajadas</mat-label>
+        <input matInput type="number" [(ngModel)]="horasTrabajadas">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="calcularSalario()">Calcular</button>
+      <div *ngIf="mostrarSalario">
+        <mat-card class="result-card">
+          <mat-card-content>
+            <p>El salario semanal es: <strong>{{ salarioSemanal | currency }}</strong></p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
