@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../angular-material/material/material.module';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,13 @@ export class LoginComponent {
   submit(usuario: HTMLInputElement,
     password: HTMLInputElement
   ):void{
-    this.authService.login(usuario.value, password.value);
-    this.router.navigateByUrl("/dashboard");
+    const esAutenticado = this.authService.login(usuario.value, password.value);
+
+    if (esAutenticado) {
+      this.router.navigateByUrl("/dashboard");
+    } else {
+      alert('Usuario o contraseña incorrectos.');
+    }
   }
 
 }
